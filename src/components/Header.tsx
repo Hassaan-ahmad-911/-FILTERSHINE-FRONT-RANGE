@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, ArrowRight, Menu, X } from 'lucide-react';
 import type { PageId } from '../types';
+import { Logo } from './Logo';
 
 interface HeaderProps {
   currentPage: PageId;
@@ -33,29 +34,12 @@ export const Header: React.FC<HeaderProps> = ({
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#EADFCF]/60 transition-all duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Single Unified Ultra-Crisp Logo */}
           <div
             onClick={() => handleNavClick('home')}
-            className="cursor-pointer flex items-center space-x-3 select-none group"
+            className="cursor-pointer group py-1"
           >
-            <img
-              src="/images/logo_hd.png"
-              alt="FilterShine Front Range"
-              className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-              onError={(e) => {
-                // Fallback to text logo if image fails
-                (e.target as HTMLElement).style.display = 'none';
-              }}
-            />
-            {/* Fallback & semantic SEO text */}
-            <div className="hidden sm:flex flex-col">
-              <span className="font-extrabold tracking-tight text-lg text-[#07191A] leading-none">
-                FILTER<span className="text-[#C96F22]">SHINE</span>
-              </span>
-              <span className="text-[9px] font-bold tracking-[0.22em] text-[#07191A] uppercase mt-0.5">
-                FRONT RANGE
-              </span>
-            </div>
+            <Logo />
           </div>
 
           {/* Desktop Navigation */}
@@ -66,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={link.page}
                   onClick={() => handleNavClick(link.page)}
-                  className={`relative py-2 text-[15px] font-medium transition-colors duration-150 ${
+                  className={`relative py-2 text-[15px] font-medium transition-colors duration-150 cursor-pointer ${
                     isActive
                       ? 'text-[#C96F22] font-semibold'
                       : 'text-[#26363A] hover:text-[#C96F22]'
@@ -111,7 +95,7 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-[#26363A] hover:text-[#C96F22] focus:outline-none"
+              className="p-2 rounded-lg text-[#26363A] hover:text-[#C96F22] focus:outline-none cursor-pointer"
               aria-label="Toggle navigation"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -130,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={link.page}
                   onClick={() => handleNavClick(link.page)}
-                  className={`text-left px-3 py-2.5 rounded-lg text-base font-medium transition-colors ${
+                  className={`text-left px-3 py-2.5 rounded-lg text-base font-medium transition-colors cursor-pointer ${
                     isActive
                       ? 'bg-[#FAF7F0] text-[#C96F22] font-semibold'
                       : 'text-[#26363A] hover:bg-gray-50'
@@ -155,7 +139,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setMobileMenuOpen(false);
                 onRequestService();
               }}
-              className="w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-full bg-[#C96F22] text-white font-semibold shadow"
+              className="w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-full bg-[#C96F22] text-white font-semibold shadow cursor-pointer"
             >
               <span>Request Service</span>
               <ArrowRight className="w-4 h-4" />

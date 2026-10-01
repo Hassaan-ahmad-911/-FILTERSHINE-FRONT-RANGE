@@ -1,18 +1,15 @@
 import React from 'react';
 import { Phone, MapPin, UserCheck } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const ContactStrip: React.FC = () => {
   return (
     <div className="bg-[#FAF7F0] border-y border-[#EADFCF] py-6 sm:py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-center divide-y sm:divide-y-0 lg:divide-x divide-[#EADFCF]">
-          {/* Col 1: Logo */}
+          {/* Col 1: Crisp Vector Logo */}
           <div className="flex items-center space-x-3 pr-4">
-            <img
-              src="/images/logo_hd.png"
-              alt="FilterShine Front Range"
-              className="h-10 w-auto object-contain"
-            />
+            <Logo />
           </div>
 
           {/* Col 2: Phone */}

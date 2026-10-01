@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { PageId, ServiceItem } from './types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
@@ -33,8 +34,11 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7F3EA] text-[#26363A] font-sans antialiased selection:bg-[#C96F22] selection:text-white">
-      {/* 1. Sticky Navigation Bar matching Mockup */}
+    <div className="min-h-screen flex flex-col bg-[#F7F3EA] text-[#26363A] font-sans antialiased selection:bg-[#C96F22] selection:text-white relative">
+      {/* Brand Copper Scroll Progress Bar */}
+      <ScrollProgressBar />
+
+      {/* 1. Sticky Navigation Bar */}
       <Header
         currentPage={currentPage}
         setCurrentPage={navigateTo}
@@ -70,8 +74,12 @@ export function App() {
         {currentPage === 'contact' && <ContactPage />}
       </div>
 
-      {/* 3. Dark Charcoal Footer matching Mockup */}
-      <Footer currentPage={currentPage} setCurrentPage={navigateTo} />
+      {/* 3. Modern Multi-Column Footer */}
+      <Footer
+        currentPage={currentPage}
+        setCurrentPage={navigateTo}
+        onRequestService={handleOpenRequestModal}
+      />
 
       {/* Request Service Intake Modal */}
       <RequestServiceModal
